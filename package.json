@@ -12,7 +12,7 @@
     "test:ui": "vitest --ui",
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui",
-    "prepare": "node -e \"if (process.env.CI) process.exit(0)\" && husky || true"
+    "prepare": "node -e \"if (process.env.CI || !require('fs').existsSync('.git')) process.exit(0)\" && node_modules/.bin/husky"
   },
   "dependencies": {
     "@fontsource-variable/lora": "^5.2.8",
@@ -38,6 +38,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
+    "husky": "^9.1.7",
     "jsdom": "^29.1.1",
     "lint-staged": "^17.0.8",
     "react-router-dom": "^7.18.0",
