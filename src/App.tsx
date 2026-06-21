@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
+import TopoBackground from './components/TopoBackground'
 import Home from './pages/Home'
 import Software from './pages/Software'
 import FineArt from './pages/FineArt'
@@ -11,6 +12,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <div className="min-h-screen flex flex-col">
+        <TopoBackground />
         <Nav />
         <div className="flex-1">
           <Routes>

@@ -23,7 +23,7 @@ export default function Nav() {
                 `text-sm transition-colors duration-200 no-underline ${
                   isActive
                     ? 'gradient-text font-semibold'
-                    : 'text-slate-400 hover:text-white'
+                    : 'text-green-700/70 hover:text-green-900'
                 }`
               }
             >

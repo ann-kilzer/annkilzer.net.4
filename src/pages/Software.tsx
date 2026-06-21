@@ -59,71 +59,71 @@ export default function Software() {
       <h1 className="text-4xl md:text-5xl font-bold mb-3">
         <span className="gradient-text">Software</span>
       </h1>
-      <p className="text-slate-400 mb-14">
+      <p className="text-green-900/70 mb-14">
         Check out my{' '}
         <a
           href="https://github.com/ann-kilzer"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-violet-400 hover:text-violet-300 transition-colors"
+          className="text-emerald-700 hover:text-emerald-600 transition-colors"
         >
           GitHub
         </a>{' '}
         for hobby projects.
       </p>
 
-      <Section title="Experience" color="#a78bfa">
+      <Section title="Experience" color="#4ade80">
         <div className="space-y-3">
           {experience.map((e, i) => (
             <div key={i} className="glass p-4 flex justify-between items-center gap-4">
               <div>
-                <p className="text-white font-medium">{e.role}</p>
-                <p className="text-slate-400 text-sm">{e.org}</p>
+                <p className="text-green-950 font-medium">{e.role}</p>
+                <p className="text-green-900/60 text-sm">{e.org}</p>
               </div>
               {e.period && (
-                <span className="text-slate-500 text-xs font-mono flex-shrink-0">{e.period}</span>
+                <span className="text-green-900/40 text-xs font-mono flex-shrink-0">{e.period}</span>
               )}
             </div>
           ))}
         </div>
       </Section>
 
-      <Section title="Volunteering" color="#f0abfc">
+      <Section title="Volunteering" color="#2dd4bf">
         <div className="space-y-3">
           {volunteering.map((v, i) => (
             <div key={i} className="glass p-4 flex justify-between items-center gap-4">
               <div>
-                <p className="text-white font-medium">{v.role}</p>
-                <p className="text-slate-400 text-sm">{v.org}</p>
+                <p className="text-green-950 font-medium">{v.role}</p>
+                <p className="text-green-900/60 text-sm">{v.org}</p>
               </div>
               {v.period && (
-                <span className="text-slate-500 text-xs font-mono flex-shrink-0">{v.period}</span>
+                <span className="text-green-900/40 text-xs font-mono flex-shrink-0">{v.period}</span>
               )}
             </div>
           ))}
         </div>
       </Section>
 
-      <Section title="Education" color="#67e8f9">
+      <Section title="Education" color="#a3e635">
         <div className="space-y-3">
           <div className="glass p-4">
-            <p className="text-white font-medium">University of Texas at Austin</p>
-            <p className="text-slate-400 text-sm">Master of Science: Computer Science</p>
+            <p className="text-green-950 font-medium">University of Texas at Austin</p>
+            <p className="text-green-900/60 text-sm">Master of Science: Computer Science</p>
           </div>
           <div className="glass p-4">
-            <p className="text-white font-medium">Gonzaga University</p>
-            <p className="text-slate-400 text-sm">BS: Computer Science · BA: Mathematics, Visual Arts · German Minor</p>
+            <p className="text-green-950 font-medium">Gonzaga University</p>
+            <p className="text-green-900/60 text-sm">BS: Computer Science · BA: Mathematics, Visual Arts · German Minor</p>
           </div>
         </div>
       </Section>
 
-      <Section title="Publications & Talks" color="#fbbf24">
+      <Section title="Publications & Talks" color="#86efac">
         <div className="space-y-4">
           {publications.map((p, i) => (
             <div key={i} className="glass p-4 space-y-1">
-              <p className="text-white text-sm font-medium">{p.title}</p>
-              {p.authors && <p className="text-slate-400 text-xs">{p.authors}</p>}
-              <p className="text-slate-500 text-xs font-mono">{p.venue} · {p.year}</p>
+              <p className="text-green-950 text-sm font-medium">{p.title}</p>
+              {p.authors && <p className="text-green-900/60 text-xs">{p.authors}</p>}
+              <p className="text-green-900/40 text-xs font-mono">{p.venue} · {p.year}</p>
             </div>
           ))}
         </div>

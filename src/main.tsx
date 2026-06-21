@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import '@fontsource-variable/lora'
-import '@fontsource-variable/playfair-display'
+import '@fontsource-variable/lora/index.css'
+import '@fontsource-variable/playfair-display/index.css'
 import './index.css'
 import App from './App.tsx'
 
