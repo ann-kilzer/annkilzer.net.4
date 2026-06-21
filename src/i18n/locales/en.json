@@ -1,0 +1,19 @@
+{
+  "home": {
+    "tagline": "Senior Software Engineer · Artist · Adventurer",
+    "greeting": "Hello!",
+    "name": "I'm Ann Kilzer.",
+    "bio": "My career is in software engineering — currently working as a <strong>Senior Software Engineer</strong>. I'm a polymath who codes, paints, and explores the great outdoors.",
+    "github": "GitHub →",
+    "instagram": "Instagram →",
+    "linkedin": "LinkedIn →",
+    "background": {
+      "title": "Background",
+      "body": "I grew up in Missoula, Montana and attended Gonzaga University, where I majored in Computer Science, Mathematics, and Art. I went on to earn a Master's in CS from UT Austin, where I researched privacy."
+    },
+    "japan": {
+      "title": "Japan Life",
+      "body": "I moved to Tokyo in early 2018 with an eager dream of learning about culture and fine art. In my spare time I enjoy Japanese Calligraphy 書道, drawing, cooking, hiking, and riding slow trains around Japan."
+    }
+  }
+}

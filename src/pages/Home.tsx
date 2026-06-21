@@ -1,21 +1,26 @@
+import { useTranslation, Trans } from 'react-i18next'
+
 export default function Home() {
+  const { t } = useTranslation()
+
   return (
     <main className="max-w-5xl mx-auto px-6 py-16">
       {/* Hero */}
       <section className="flex flex-col md:flex-row gap-12 items-center mb-20">
         <div className="flex-1 space-y-6">
           <p className="font-mono text-sm tracking-widest text-emerald-700 uppercase">
-            Senior Software Engineer · Artist · Adventurer
+            {t('home.tagline')}
           </p>
           <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-            <span className="gradient-text">Hello!</span>
+            <span className="gradient-text">{t('home.greeting')}</span>
             <br />
-            <span className="text-green-950">I'm Ann Kilzer.</span>
+            <span className="text-green-950">{t('home.name')}</span>
           </h1>
           <p className="text-green-900 text-lg leading-relaxed">
-            My career is in software engineering — currently working as a{' '}
-            <span className="text-emerald-600 font-medium">Senior Software Engineer</span>.
-            I'm a polymath who codes, paints, and explores the great outdoors.
+            <Trans
+              i18nKey="home.bio"
+              components={{ strong: <span className="text-emerald-600 font-medium" /> }}
+            />
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2">
@@ -25,7 +30,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="glass px-5 py-2 text-sm text-green-900 hover:bg-emerald-100/60 transition-colors duration-200 no-underline font-mono"
             >
-              GitHub →
+              {t('home.github')}
             </a>
             <a
               href="https://www.instagram.com/ann.kilzer.art/"
@@ -33,7 +38,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="glass px-5 py-2 text-sm text-green-900 hover:bg-emerald-100/60 transition-colors duration-200 no-underline font-mono"
             >
-              Instagram →
+              {t('home.instagram')}
             </a>
             <a
               href="https://www.linkedin.com/in/annkilzer/"
@@ -41,7 +46,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="glass px-5 py-2 text-sm text-green-900 hover:bg-emerald-100/60 transition-colors duration-200 no-underline font-mono"
             >
-              LinkedIn →
+              {t('home.linkedin')}
             </a>
           </div>
         </div>
@@ -65,20 +70,16 @@ export default function Home() {
       {/* About grid */}
       <section className="grid md:grid-cols-2 gap-6 mb-20">
         <div className="glass p-6 space-y-3">
-          <h2 className="text-lg font-semibold gradient-text">Background</h2>
+          <h2 className="text-lg font-semibold gradient-text">{t('home.background.title')}</h2>
           <p className="text-green-900/80 text-sm leading-relaxed">
-            I grew up in Missoula, Montana and attended Gonzaga University, where I majored in
-            Computer Science, Mathematics, and Art. I went on to earn a Master's in CS from UT
-            Austin, where I researched privacy.
+            {t('home.background.body')}
           </p>
         </div>
 
         <div className="glass p-6 space-y-3">
-          <h2 className="text-lg font-semibold gradient-text-warm">Japan Life</h2>
+          <h2 className="text-lg font-semibold gradient-text-warm">{t('home.japan.title')}</h2>
           <p className="text-green-900/80 text-sm leading-relaxed">
-            I moved to Tokyo in early 2018 with an eager dream of learning about culture and fine art. In my spare time I
-            enjoy Japanese Calligraphy 書道, drawing, cooking, hiking, and riding
-            slow trains around Japan.
+            {t('home.japan.body')}
           </p>
         </div>
       </section>

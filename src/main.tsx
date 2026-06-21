@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import '@fontsource-variable/lora/index.css'
 import '@fontsource-variable/playfair-display/index.css'
+import './i18n'
 import './index.css'
 import App from './App.tsx'
 
