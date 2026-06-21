@@ -18,7 +18,7 @@ export default function Home() {
             I'm a polymath who codes, paints, and explores the great outdoors.
           </p>
 
-          <div className="flex gap-4 pt-2">
+          <div className="flex flex-wrap gap-4 pt-2">
             <a
               href="https://github.com/ann-kilzer"
               target="_blank"
@@ -26,6 +26,22 @@ export default function Home() {
               className="glass px-5 py-2 text-sm text-white hover:bg-white/10 transition-colors duration-200 no-underline font-mono"
             >
               GitHub →
+            </a>
+            <a
+              href="https://www.instagram.com/ann.kilzer.art/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass px-5 py-2 text-sm text-white hover:bg-white/10 transition-colors duration-200 no-underline font-mono"
+            >
+              Instagram →
+            </a>
+            <a
+              href="https://www.linkedin.com/in/annkilzer/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass px-5 py-2 text-sm text-white hover:bg-white/10 transition-colors duration-200 no-underline font-mono"
+            >
+              LinkedIn →
             </a>
           </div>
         </div>
