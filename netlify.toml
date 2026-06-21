@@ -1,6 +1,7 @@
 [build]
-  command = "npm ci --ignore-scripts && npm run build"
+  command = "npm run build"
   publish = "dist"
 
 [build.environment]
   HUSKY = "0"
+  NPM_FLAGS = "--ignore-scripts"
