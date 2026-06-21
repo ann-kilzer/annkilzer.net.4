@@ -1,4 +1,10 @@
 {
+  "nav": {
+    "home": "Home",
+    "software": "Software",
+    "art": "Fine Art",
+    "blog": "Blog"
+  },
   "home": {
     "tagline": "Senior Software Engineer · Artist · Adventurer",
     "greeting": "Hello!",

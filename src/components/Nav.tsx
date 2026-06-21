@@ -2,14 +2,14 @@ import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 const links = [
-  { to: '/', label: 'Home' },
-  { to: '/software', label: 'Software' },
-  { to: '/art', label: 'Fine Art' },
-  { to: '/blog', label: 'Blog' },
+  { to: '/', key: 'nav.home' },
+  { to: '/software', key: 'nav.software' },
+  { to: '/art', key: 'nav.art' },
+  { to: '/blog', key: 'nav.blog' },
 ]
 
 export default function Nav() {
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation()
   const isJa = i18n.language === 'ja'
 
   return (
@@ -19,7 +19,7 @@ export default function Nav() {
       </span>
       <div className="flex items-center gap-6">
         <ul className="flex gap-6 list-none m-0 p-0">
-          {links.map(({ to, label }) => (
+          {links.map(({ to, key }) => (
             <li key={to}>
               <NavLink
                 to={to}
@@ -32,7 +32,7 @@ export default function Nav() {
                   }`
                 }
               >
-                {label}
+                {t(key)}
               </NavLink>
             </li>
           ))}
