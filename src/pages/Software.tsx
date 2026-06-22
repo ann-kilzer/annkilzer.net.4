@@ -18,6 +18,8 @@ const volunteering = [
   { role: 'Cat Rescue Evaluator', org: 'Austin Pets Alive!', period: 'Aug 2011 – Nov 2016' },
 ]
 
+import { certifications } from '../data/certifications'
+
 const publications = [
   {
     title: '"Canary in a coal mine: Building infrastructure resiliency with canary data reloads."',
@@ -114,6 +116,29 @@ export default function Software() {
             <p className="text-green-950 font-medium">Gonzaga University</p>
             <p className="text-green-900/60 text-sm">BS: Computer Science · BA: Mathematics, Visual Arts · German Minor</p>
           </div>
+        </div>
+      </Section>
+
+      <Section title="Certifications" color="#6ee7b7">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {certifications.map((cert) => (
+            <a
+              key={cert.url}
+              href={cert.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass p-4 flex flex-col items-center gap-3 text-center hover:bg-emerald-100/60 transition-colors duration-200 no-underline"
+            >
+              <img src={cert.image} alt={cert.name} className="w-16 h-16 object-contain" />
+              <div>
+                <p className="text-green-950 text-xs font-medium leading-snug">{cert.name}</p>
+                <p className="text-green-900/50 text-xs mt-1">{cert.issuer}</p>
+                {cert.expires && (
+                  <p className="text-green-900/40 text-xs font-mono mt-1">exp. {cert.expires}</p>
+                )}
+              </div>
+            </a>
+          ))}
         </div>
       </Section>
 

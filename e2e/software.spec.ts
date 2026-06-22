@@ -18,6 +18,6 @@ test.describe('Software page', () => {
   })
 
   test('GitHub link is present', async ({ page }) => {
-    await expect(page.getByRole('link', { name: 'GitHub' })).toHaveAttribute('href', 'https://github.com/ann-kilzer')
+    await expect(page.getByRole('link', { name: 'GitHub', exact: true })).toHaveAttribute('href', 'https://github.com/ann-kilzer')
   })
 })
