@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, it, expect, afterEach } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
-import Nav from '../components/Nav'
-import i18n from '../i18n'
+import Nav from '../../components/Nav'
+import i18n from '../../i18n'
 
 function renderNav() {
   return render(<MemoryRouter><Nav /></MemoryRouter>)
