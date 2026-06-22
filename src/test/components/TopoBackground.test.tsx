@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
-import TopoBackground from '../../components/TopoBackground'
+import TopoBackground from '@/components/TopoBackground'
 
 describe('TopoBackground', () => {
   it('renders an aria-hidden decorative element', () => {

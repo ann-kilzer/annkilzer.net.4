@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
-import FineArt from '../../pages/FineArt'
+import FineArt from '@/pages/FineArt'
 
 describe('FineArt page', () => {
   it('renders the heading', () => {

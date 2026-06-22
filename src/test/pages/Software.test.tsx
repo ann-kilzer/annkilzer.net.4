@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
-import Software from '../../pages/Software'
-import { certifications } from '../../data/certifications'
+import Software from '@/pages/Software'
+import { certifications } from '@/data/certifications'
 
 function renderSoftware() {
   return render(

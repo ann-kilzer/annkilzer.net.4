@@ -1,6 +1,6 @@
-import { experience, volunteering } from '../data/experience'
-import { certifications } from '../data/certifications'
-import { publications } from '../data/publications'
+import { experience, volunteering } from '@/data/experience'
+import { certifications } from '@/data/certifications'
+import { publications } from '@/data/publications'
 
 function Section({ title, color, children }: { title: string; color: string; children: React.ReactNode }) {
   return (

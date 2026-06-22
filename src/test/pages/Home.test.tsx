@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
-import Home from '../../pages/Home'
+import Home from '@/pages/Home'
 
 describe('Home page', () => {
   it('renders the greeting', () => {
