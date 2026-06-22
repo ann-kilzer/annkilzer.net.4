@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
 import Software from '../pages/Software'
+import { certifications } from '../data/certifications'
 
 function renderSoftware() {
   return render(
@@ -25,7 +26,7 @@ describe('Software page — Certifications', () => {
 
   it('renders all 8 certification cards', () => {
     renderSoftware()
-    expect(getCredlyLinks().length).toBe(8)
+    expect(getCredlyLinks().length).toBe(certifications.length)
   })
 
   it('each certification links to credly.com', () => {
@@ -48,7 +49,7 @@ describe('Software page — Certifications', () => {
     const imgs = screen.getAllByRole('img').filter(img =>
       img.getAttribute('src')?.includes('credly.com')
     )
-    expect(imgs.length).toBe(8)
+    expect(imgs.length).toBe(certifications.length)
     imgs.forEach(img => {
       expect(img.getAttribute('alt')).toBeTruthy()
     })
