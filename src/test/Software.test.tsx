@@ -46,9 +46,16 @@ describe('Software page — Certifications', () => {
 
   it('renders badge images with alt text', () => {
     renderSoftware()
-    const imgs = screen.getAllByRole('img').filter(img =>
-      img.getAttribute('src')?.includes('credly.com')
-    )
+    const imgs = screen.getAllByRole('img').filter(img => {
+      const src = img.getAttribute('src')
+      if (!src) return false
+      try {
+        const host = new URL(src, 'http://localhost').hostname
+        return host === 'credly.com' || host.endsWith('.credly.com')
+      } catch {
+        return false
+      }
+    })
     expect(imgs.length).toBe(certifications.length)
     imgs.forEach(img => {
       expect(img.getAttribute('alt')).toBeTruthy()
