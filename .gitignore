@@ -22,6 +22,9 @@ coverage/
 # Claude Code
 .claude/
 
+# Blog drafts — local only, never publish to GitHub
+src/content/drafts/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
