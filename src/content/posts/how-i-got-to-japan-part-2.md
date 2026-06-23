@@ -3,7 +3,7 @@ title: "How I got to Japan, Part 2: Letting Go"
 date: 2024-07-07
 slug: how-i-got-to-japan-part-2
 coverImage: /images/blog/how-i-got-to-japan-part-2-cover.jpg
-excerpt: ""
+excerpt: "On detachment"
 ---
 
 I returned to the USA with my new goal in mind. Asked for an internal transfer, and was told "maybe."
