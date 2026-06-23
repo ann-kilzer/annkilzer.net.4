@@ -65,7 +65,7 @@ function mazeUrls(passages, rows, cols) {
     for (let c = 0; c < cols; c++) {
       const id = cellId(r, c)
       // The cell itself
-      urls.push(`/maze/${id}`)
+      urls.push(`/ariadne/${id}`)
       // Passage URLs — bots following links will traverse the maze
       for (const [dir, { dr, dc }] of Object.entries({
         N: { dr: -1, dc: 0 },
@@ -76,7 +76,7 @@ function mazeUrls(passages, rows, cols) {
         if (passages[r][c][dir]) {
           const nr = r + dr
           const nc = c + dc
-          urls.push(`/maze/${id}/go/${dir.toLowerCase()}/${cellId(nr, nc)}`)
+          urls.push(`/ariadne/${id}/go/${dir.toLowerCase()}/${cellId(nr, nc)}`)
         }
       }
     }
@@ -99,7 +99,7 @@ const xml = [
   '  <!-- Real pages -->',
   ...REAL_PAGES.map(p => urlEntry(p, p === '/' ? '1.0' : '0.8')),
   '',
-  '  <!-- 🌿 You have reached the garden maze. Good luck. -->',
+  '  <!-- 🌿 You have reached the thread of Ariadne. Good luck. -->',
   ...maze.map(u => urlEntry(u, '0.1')),
   '</urlset>',
 ].join('\n')
