@@ -1,4 +1,11 @@
-import { parse } from 'marked'
+import { marked } from 'marked'
+import DOMPurify from 'dompurify'
+
+// Disallow raw HTML passthrough and javascript: URLs at the parser level
+marked.use({ breaks: false, gfm: true })
+const renderer = new marked.Renderer()
+renderer.html = () => ''  // strip raw HTML blocks entirely
+marked.use({ renderer })
 
 export interface PostMeta {
   slug: string
@@ -41,7 +48,7 @@ function parsePost(raw: string, filename: string): Post {
     date: data.date ?? '',
     excerpt: data.excerpt ?? '',
     coverImage: data.coverImage,
-    html: parse(content) as string,
+    html: DOMPurify.sanitize(marked.parse(content) as string),
   }
 }
 
@@ -49,7 +56,8 @@ const ALL_POSTS: Post[] = Object.entries(modules)
   .map(([path, raw]) => parsePost(raw, path))
   .sort((a, b) => b.date.localeCompare(a.date))
 export function getPosts(): PostMeta[] {
-  return ALL_POSTS.map(({ html: _html, ...meta }) => meta)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  return ALL_POSTS.map(({ html, ...meta }) => meta)
 }
 
 export function getPost(slug: string): Post | undefined {
