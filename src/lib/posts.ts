@@ -47,7 +47,7 @@ const ALL_POSTS: Post[] = Object.entries(modules)
   .sort((a, b) => (a.date < b.date ? 1 : -1))
 
 export function getPosts(): PostMeta[] {
-  return ALL_POSTS.map(({ html, ...meta }) => meta) // eslint-disable-line @typescript-eslint/no-unused-vars
+  return ALL_POSTS.map(({ html: _html, ...meta }) => meta)
 }
 
 export function getPost(slug: string): Post | undefined {
