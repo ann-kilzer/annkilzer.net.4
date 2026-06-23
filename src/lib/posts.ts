@@ -13,17 +13,20 @@ export interface Post extends PostMeta {
 }
 
 function parseFrontmatter(raw: string): { data: Record<string, string>; content: string } {
-  if (!raw.startsWith('---')) return { data: {}, content: raw }
-  const end = raw.indexOf('\n---', 3)
-  if (end === -1) return { data: {}, content: raw }
-  const block = raw.slice(4, end)
-  const content = raw.slice(end + 4).trimStart()
+  const normalized = raw.replace(/\r\n/g, '\n')
+  const match = normalized.match(/^---\n([\s\S]*?)\n---\n?/)
+  if (!match) return { data: {}, content: normalized }
+
+  const block = match[1]
+  const content = normalized.slice(match[0].length).trimStart()
   const data: Record<string, string> = {}
+
   for (const line of block.split('\n')) {
     const colon = line.indexOf(':')
     if (colon === -1) continue
     data[line.slice(0, colon).trim()] = line.slice(colon + 1).trim()
   }
+
   return { data, content }
 }
 
