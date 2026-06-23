@@ -15,12 +15,12 @@ describe('Blog page', () => {
 
   it('lists posts when posts exist', () => {
     renderBlog()
-    expect(screen.getByText(/how i got to japan/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/how i got to japan/i).length).toBeGreaterThan(0)
   })
 
   it('links each post to its slug route', () => {
     renderBlog()
-    const link = screen.getByRole('link', { name: /how i got to japan/i })
+    const link = screen.getByRole('link', { name: /part 1/i })
     expect(link).toHaveAttribute('href', '/blog/how-i-got-to-japan-part-1')
   })
 })
