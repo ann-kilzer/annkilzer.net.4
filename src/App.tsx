@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Software from './pages/Software'
 import FineArt from './pages/FineArt'
 import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
             <Route path="/software" element={<Software />} />
             <Route path="/art" element={<FineArt />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
