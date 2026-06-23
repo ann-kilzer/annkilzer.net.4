@@ -16,7 +16,7 @@ test.describe('Blog', () => {
   test('post page renders content', async ({ page }) => {
     await page.goto('/blog/hello-world')
     await expect(page.getByRole('heading', { name: /hello, world/i })).toBeVisible()
-    await expect(page.getByText(/every personal site eventually/i)).toBeVisible()
+    await expect(page.getByText(/lorem ipsum/i)).toBeVisible()
   })
 
   test('post page has back link to blog', async ({ page }) => {
