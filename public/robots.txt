@@ -1,0 +1,76 @@
+# Standard search engines: index everything except artwork
+User-agent: Googlebot
+Disallow: /art
+
+User-agent: Bingbot
+Disallow: /art
+
+User-agent: Slurp
+Disallow: /art
+
+User-agent: DuckDuckBot
+Disallow: /art
+
+User-agent: Baiduspider
+Disallow: /art
+
+User-agent: YandexBot
+Disallow: /art
+
+# AI training crawlers: disallow everything
+# I do not consent to my content being used for AI training datasets.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: omgili
+Disallow: /
+
+User-agent: omgilibot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+Sitemap: https://annkilzer.net/sitemap.xml
