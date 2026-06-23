@@ -1,10 +1,10 @@
 import { marked } from 'marked'
 import DOMPurify from 'dompurify'
 
-// Disallow raw HTML passthrough and javascript: URLs at the parser level
+// Parse markdown and strip raw HTML blocks; rely on DOMPurify to sanitize the generated HTML (including unsafe URLs)
 marked.use({ breaks: false, gfm: true })
 const renderer = new marked.Renderer()
-renderer.html = () => ''  // strip raw HTML blocks entirely
+renderer.html = () => '' // strip raw HTML blocks entirely
 marked.use({ renderer })
 
 export interface PostMeta {
