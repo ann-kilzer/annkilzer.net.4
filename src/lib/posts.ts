@@ -47,8 +47,7 @@ function parsePost(raw: string, filename: string): Post {
 
 const ALL_POSTS: Post[] = Object.entries(modules)
   .map(([path, raw]) => parsePost(raw, path))
-  .sort((a, b) => (a.date < b.date ? 1 : -1))
-
+  .sort((a, b) => b.date.localeCompare(a.date))
 export function getPosts(): PostMeta[] {
   return ALL_POSTS.map(({ html: _html, ...meta }) => meta)
 }
