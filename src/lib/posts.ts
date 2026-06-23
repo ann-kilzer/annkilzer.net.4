@@ -1,4 +1,3 @@
-import matter from 'gray-matter'
 import { parse } from 'marked'
 
 export interface PostMeta {
@@ -13,15 +12,30 @@ export interface Post extends PostMeta {
   html: string
 }
 
+function parseFrontmatter(raw: string): { data: Record<string, string>; content: string } {
+  if (!raw.startsWith('---')) return { data: {}, content: raw }
+  const end = raw.indexOf('\n---', 3)
+  if (end === -1) return { data: {}, content: raw }
+  const block = raw.slice(4, end)
+  const content = raw.slice(end + 4).trimStart()
+  const data: Record<string, string> = {}
+  for (const line of block.split('\n')) {
+    const colon = line.indexOf(':')
+    if (colon === -1) continue
+    data[line.slice(0, colon).trim()] = line.slice(colon + 1).trim()
+  }
+  return { data, content }
+}
+
 const modules = import.meta.glob('../content/posts/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>
 
 function parsePost(raw: string, filename: string): Post {
-  const { data, content } = matter(raw)
+  const { data, content } = parseFrontmatter(raw)
   const slug = data.slug ?? filename.replace(/^.*\//, '').replace(/\.md$/, '')
   return {
     slug,
     title: data.title ?? slug,
-    date: String(data.date ?? ''),
+    date: data.date ?? '',
     excerpt: data.excerpt ?? '',
     coverImage: data.coverImage,
     html: parse(content) as string,
@@ -33,8 +47,7 @@ const ALL_POSTS: Post[] = Object.entries(modules)
   .sort((a, b) => (a.date < b.date ? 1 : -1))
 
 export function getPosts(): PostMeta[] {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  return ALL_POSTS.map(({ html, ...meta }) => meta)
+  return ALL_POSTS.map(({ html, ...meta }) => meta) // eslint-disable-line @typescript-eslint/no-unused-vars
 }
 
 export function getPost(slug: string): Post | undefined {
