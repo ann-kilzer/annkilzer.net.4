@@ -2,19 +2,15 @@
 title: Hello, World
 date: 2026-06-23
 slug: hello-world
-excerpt: The first post on my new blog. A few thoughts on starting over and building in public.
+excerpt: Lorem ipsum dolor sit amet.
 ---
 
-Every personal site eventually gets a blog section. Here's mine.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-I've been putting it off because I wasn't sure what I'd write about. The honest answer is: whatever I find interesting. Software, Japan, calligraphy, slow trains. Probably some overlap between all of them.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-## Why now
+## Section Two
 
-I rebuilt this site from scratch recently — Vite, React, Tailwind — and the blank Blog page felt like a dare.
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
 
-## What to expect
-
-Short posts, mostly. I'm not trying to build an audience or optimize for search. This is closer to a notebook than a publication.
-
-If something here is useful to you, great. If not, that's fine too.
+Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
