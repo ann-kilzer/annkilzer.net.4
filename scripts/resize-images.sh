@@ -28,7 +28,7 @@ OUT_DIR="art/step2_resized"
 EDGE=1536
 QUALITY=82
 FORMAT=""
-STRIP=0
+STRIP=1
 
 while getopts "e:q:f:sh" opt; do
   case "$opt" in
