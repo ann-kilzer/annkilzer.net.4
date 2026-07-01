@@ -36,7 +36,7 @@ while getopts "e:q:f:sh" opt; do
     q) QUALITY="$OPTARG" ;;
     f) FORMAT="$OPTARG" ;;
     s) STRIP=1 ;;
-    h) grep '^#' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    h) awk 'NR==1{next} /^#/{sub(/^# ?/,""); print; next} {exit}' "$0"; exit 0 ;;
     *) echo "Run with -h for usage." >&2; exit 1 ;;
   esac
 done
