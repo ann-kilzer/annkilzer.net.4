@@ -25,6 +25,10 @@ coverage/
 # Blog drafts — local only, never publish to GitHub
 src/content/drafts/
 
+# Image-processing pipeline — local working folders (raw -> resized -> glazed).
+# Only the final glazed images get copied into public/images/.
+art/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
