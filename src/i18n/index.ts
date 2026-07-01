@@ -4,17 +4,31 @@ import en from './locales/en.json'
 import ja from './locales/ja.json'
 import { initialLocale, storeLocale } from './detectLocale'
 
+const startingLocale = initialLocale()
+
+/** Keep the <html lang> attribute in sync with the active locale. */
+function syncHtmlLang(locale: string) {
+  if (typeof document !== 'undefined') {
+    document.documentElement.lang = locale
+  }
+}
+
 i18n.use(initReactI18next).init({
   resources: {
     en: { translation: en },
     ja: { translation: ja },
   },
-  lng: initialLocale(),
+  lng: startingLocale,
   fallbackLng: 'en',
   interpolation: { escapeValue: false },
 })
 
-// Persist the user's language choice so it survives reloads.
-i18n.on('languageChanged', storeLocale)
+syncHtmlLang(startingLocale)
+
+// Persist the user's language choice and keep <html lang> current.
+i18n.on('languageChanged', (locale) => {
+  storeLocale(locale)
+  syncHtmlLang(locale)
+})
 
 export default i18n
