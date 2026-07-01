@@ -30,3 +30,37 @@ npm run dev
 npm run test        # unit tests (vitest)
 npm run e2e         # e2e tests (playwright)
 ```
+
+## How to update images
+
+Artwork and photos go through a local pipeline before landing on the site.
+The `art/` working folders are gitignored — only the final images you copy
+into `public/images/` are committed.
+
+```
+art/step1_raw/       ← drop original full-size images here
+      ↓  scripts/resize-images.sh -s
+art/step2_resized/   ← resized for web (this is Glaze's input)
+      ↓  run Glaze (external app)
+art/step3_glazed/    ← Glaze output
+      ↓  cp into the repo
+public/images/       ← committed to the site
+```
+
+**Steps:**
+
+1. Put original images in `art/step1_raw/`.
+2. Resize them:
+   ```bash
+   scripts/resize-images.sh -s
+   ```
+   Defaults: 1536px longest edge, JPEG quality 82, metadata stripped,
+   downscale-only (never upscales). Options: `-e EDGE`, `-q QUALITY`,
+   `-f jpg|png|webp`, `-s` (strip metadata). Run `-h` for help.
+3. Run **Glaze** on `art/step2_resized/`, outputting to `art/step3_glazed/`.
+   Always resize *before* glazing — downscaling afterward degrades the
+   protective perturbations.
+4. Copy the glazed images into `public/images/` (e.g. `public/images/blog/`)
+   and reference them from posts or pages.
+
+Requires ImageMagick (`brew install imagemagick`).
