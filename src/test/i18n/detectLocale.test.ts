@@ -1,5 +1,12 @@
-import { describe, it, expect } from 'vitest'
-import { detectLocale, DEFAULT_LOCALE } from '@/i18n/detectLocale'
+import { describe, it, expect, beforeEach } from 'vitest'
+import {
+  detectLocale,
+  DEFAULT_LOCALE,
+  getStoredLocale,
+  storeLocale,
+  initialLocale,
+  LOCALE_STORAGE_KEY,
+} from '@/i18n/detectLocale'
 
 describe('detectLocale', () => {
   it('detects Japanese from an exact primary tag', () => {
@@ -36,5 +43,46 @@ describe('detectLocale', () => {
 
   it('skips empty entries', () => {
     expect(detectLocale(['', 'ja'])).toBe('ja')
+  })
+})
+
+describe('locale persistence', () => {
+  beforeEach(() => {
+    localStorage.clear()
+  })
+
+  it('returns undefined when nothing is stored', () => {
+    expect(getStoredLocale()).toBeUndefined()
+  })
+
+  it('round-trips a stored locale', () => {
+    storeLocale('ja')
+    expect(getStoredLocale()).toBe('ja')
+  })
+
+  it('ignores an invalid stored value', () => {
+    localStorage.setItem(LOCALE_STORAGE_KEY, 'fr')
+    expect(getStoredLocale()).toBeUndefined()
+  })
+
+  it('does not persist an unsupported locale', () => {
+    storeLocale('fr')
+    expect(localStorage.getItem(LOCALE_STORAGE_KEY)).toBeNull()
+  })
+})
+
+describe('initialLocale', () => {
+  beforeEach(() => {
+    localStorage.clear()
+  })
+
+  it('prefers a stored locale over browser detection', () => {
+    storeLocale('ja')
+    expect(initialLocale()).toBe('ja')
+  })
+
+  it('falls back to browser detection when nothing is stored', () => {
+    // jsdom navigator.language is "en-US" by default
+    expect(initialLocale()).toBe('en')
   })
 })

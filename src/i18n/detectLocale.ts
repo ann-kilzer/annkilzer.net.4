@@ -3,6 +3,46 @@ export type Locale = (typeof SUPPORTED_LOCALES)[number]
 
 export const DEFAULT_LOCALE: Locale = 'en'
 
+export const LOCALE_STORAGE_KEY = 'locale'
+
+function isLocale(value: string | null): value is Locale {
+  return value !== null && (SUPPORTED_LOCALES as readonly string[]).includes(value)
+}
+
+/**
+ * Read a previously persisted locale from localStorage. Returns undefined
+ * when nothing valid is stored or storage is unavailable (SSR / privacy mode).
+ */
+export function getStoredLocale(): Locale | undefined {
+  try {
+    const stored = localStorage.getItem(LOCALE_STORAGE_KEY)
+    return isLocale(stored) ? stored : undefined
+  } catch {
+    return undefined
+  }
+}
+
+/**
+ * Persist the chosen locale to localStorage. Silently no-ops when storage
+ * is unavailable.
+ */
+export function storeLocale(locale: string): void {
+  if (!isLocale(locale)) return
+  try {
+    localStorage.setItem(LOCALE_STORAGE_KEY, locale)
+  } catch {
+    // ignore write failures (private mode, quota, SSR)
+  }
+}
+
+/**
+ * The locale to start with: a persisted choice takes priority, otherwise
+ * fall back to browser detection.
+ */
+export function initialLocale(): Locale {
+  return getStoredLocale() ?? detectLocale()
+}
+
 /**
  * Determine the best supported locale from the browser's language
  * preferences (navigator.languages / navigator.language — the client-side
