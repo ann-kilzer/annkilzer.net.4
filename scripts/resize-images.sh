@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 #
-# Resize images to a target longest-edge for web display.
-# Run this BEFORE Glaze so you glaze at final display resolution
-# (downscaling after glazing degrades the protective perturbations).
+# Resize images for web display.
+# Reads every image in art/step1_raw and writes resized copies to
+# art/step2_resized. Run this BEFORE Glaze so you glaze at final display
+# resolution (downscaling after glazing degrades the protective
+# perturbations).
 #
 # Usage:
-#   scripts/resize-images.sh [options] <input...> <output_dir>
+#   scripts/resize-images.sh [options]
 #
 # Examples:
-#   scripts/resize-images.sh ~/art/raw/*.jpg ./resized
-#   scripts/resize-images.sh -e 2048 -q 92 photo.jpg ./out
+#   scripts/resize-images.sh
+#   scripts/resize-images.sh -e 2048 -q 92 -f png
 #
 # Options:
 #   -e EDGE     Longest edge in px         (default: 1536)
@@ -19,6 +21,9 @@
 #   -h          Show this help
 
 set -euo pipefail
+
+IN_DIR="art/step1_raw"
+OUT_DIR="art/step2_resized"
 
 EDGE=1536
 QUALITY=82
@@ -35,12 +40,6 @@ while getopts "e:q:f:sh" opt; do
     *) echo "Run with -h for usage." >&2; exit 1 ;;
   esac
 done
-shift $((OPTIND - 1))
-
-if [ "$#" -lt 2 ]; then
-  echo "Error: need at least one input and an output dir. Run -h for usage." >&2
-  exit 1
-fi
 
 # ImageMagick 7 uses `magick`, 6 uses `convert`.
 if command -v magick >/dev/null 2>&1; then
@@ -52,16 +51,27 @@ else
   exit 1
 fi
 
-# Last argument is the output directory; everything before it is input.
-OUT_DIR="${!#}"
-INPUTS=("${@:1:$#-1}")
+if [ ! -d "$IN_DIR" ]; then
+  echo "Error: input dir '$IN_DIR' not found. Create it and add images." >&2
+  exit 1
+fi
+
 mkdir -p "$OUT_DIR"
 
 strip_flag=()
 [ "$STRIP" -eq 1 ] && strip_flag=(-strip)
 
+shopt -s nullglob nocaseglob
+INPUTS=("$IN_DIR"/*.{jpg,jpeg,png,webp,tif,tiff})
+shopt -u nullglob nocaseglob
+
+if [ "${#INPUTS[@]}" -eq 0 ]; then
+  echo "No images found in $IN_DIR" >&2
+  exit 1
+fi
+
 for src in "${INPUTS[@]}"; do
-  [ -f "$src" ] || { echo "Skipping (not a file): $src" >&2; continue; }
+  [ -f "$src" ] || continue
 
   base="$(basename "$src")"
   name="${base%.*}"
