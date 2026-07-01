@@ -99,7 +99,7 @@ for src in "${INPUTS[@]}"; do
   # Report before/after size.
   before=$(du -h "$src" | cut -f1)
   after=$(du -h "$dest" | cut -f1)
-  dims=$("$IM" identify -format '%wx%h' "$dest")
+  if [ "$IM" = "magick" ]; then dims=$("$IM" identify -format '%wx%h' "$dest"); else dims=$(identify -format '%wx%h' "$dest"); fi
   printf '%s  %s -> %s  (%s, %s)\n' "$base" "$before" "$after" "$dims" "$out_ext"
 done
 
